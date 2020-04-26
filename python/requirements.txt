@@ -1,0 +1,6 @@
+requests
+watchdog
+pytest
+pytest-cov
+PyYAML
+argh

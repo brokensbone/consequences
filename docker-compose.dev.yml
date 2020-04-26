@@ -1,0 +1,33 @@
+version: '2'
+services:
+  python-api:
+    build: ./python
+    image: registry.alcachofa.faith/develop/consequences/python-api:dev
+    volumes:
+      - ./python/:/app
+      - ./data/:/data
+    ports:
+      - 8998:8000
+    expose:
+      - 8000
+    environment:
+      - EXAMPLE=value
+    entrypoint: watchmedo auto-restart --recursive --pattern="*.py" --directory="/app/src" python /app/main.py
+  python-tests:
+    image: registry.alcachofa.faith/develop/consequences/python-api:dev
+    entrypoint: watchmedo auto-restart --recursive --pattern="*.py" --directory="/app/" -- pytest --cov-report term --cov-report html:/testreport/ --cov=src 
+    depends_on:
+      - python-api
+    volumes:
+      - ./python/:/app
+      - ./data/:/data
+      - ./testreport/:/testreport/
+    environment:
+      - EXAMPLE=value
+  nginx:
+    build: ./web
+    image: registry.alcachofa.faith/develop/consequences/nginx:dev
+    volumes:
+      - ./web/app/:/app
+    ports:
+      - 8490:80
