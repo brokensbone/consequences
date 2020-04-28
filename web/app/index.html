@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Consequences!</title>
+    <!-- Bootstrap CSS file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/image/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/image/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="consequences.js"></script>
+
+</head>
+<body onLoad="checkGameValid()">
+    <nav class="navbar navbar-expand-md">
+      <a class="navbar-brand" href="#">Consequences</a>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--<div class="collapse navbar-collapse" id="main-navigation">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="?action=new">Newly Added</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?action=random">Random</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?action=searchartist">Artist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?action=mpd&server=kitchen">Kitchen</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?action=mpd&server=frontroom">Frontroom</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/recordbox">Recordbox</a>
+          </li>
+        </ul>
+      </div>-->
+    </nav>
+
+    <!-- Main content div -->
+    <div id="container" class="container features">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">This will be used to send you your result.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="questionTextarea1">His name</label>
+          <textarea class="form-control" id="questionTextarea1" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="questionTextarea2">Her name</label>
+          <textarea class="form-control" id="questionTextarea2" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="questionTextarea3">Where they met</label>
+          <textarea class="form-control" id="questionTextarea3" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="questionTextarea4">He said</label>
+          <textarea class="form-control" id="questionTextarea4" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="questionTextarea5">She said</label>
+          <textarea class="form-control" id="questionTextarea5" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="questionTextarea6">And the consequence was...</label>
+          <textarea class="form-control" id="questionTextarea6" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="questionTextarea7">And the world said...</label>
+          <textarea class="form-control" id="questionTextarea7" rows="2"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <!--<div id="container" class="container features"></div>-->
+
+    <!--MODAL DIALOGS FOR PLAYBACK -->
+    <div class="modal" tabindex="-1" role="dialog" id="dialog-pick-server">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer" id="dialog-pick-server-footer" >
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Kitchen</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Frontroom</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--<footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-12">
+          <h6 class="text-uppercase font-weight-bold">Footer</h6>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        </div>
+      <div class="footer-copyright text-center">Hey there.</div>
+    </footer> -->
+</body>
+</html>

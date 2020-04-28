@@ -4,3 +4,5 @@ pytest
 pytest-cov
 PyYAML
 argh
+flask
+waitress
