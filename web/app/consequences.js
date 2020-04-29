@@ -31,6 +31,7 @@ function checkGameValid() {
   p.then(function(result){
     console.log("OK")
   }, function(error) {
-    alert("YOur gamecode isn't valid")
+    alert("Gamecode '" + code + "' isn't valid")
+    window.location.href = "../";
   });
 }
