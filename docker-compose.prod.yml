@@ -1,0 +1,22 @@
+version: '2'
+services:
+  python-api:
+    build: ./python
+    image: registry.alcachofa.faith/develop/consequences/python-api:prod
+    volumes:
+      - ./python/:/app
+      - ./proddata/:/data
+    ports:
+      - 8999:8000
+    expose:
+      - 8000
+    environment:
+      - EXAMPLE=value
+    entrypoint: watchmedo auto-restart --recursive --pattern="*.py" --directory="/app/src" python /app/main.py
+  nginx:
+    build: ./web
+    image: registry.alcachofa.faith/develop/consequences/nginx:prod
+    volumes:
+      - ./web/app/:/app
+    ports:
+      - 8491:80
