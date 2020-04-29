@@ -3,7 +3,7 @@ import json
 import logging
 from functools import wraps
 
-from flask import Flask, request, abort
+from flask import Flask, request, abort, redirect
 from waitress import serve
 
 from src import controller
@@ -38,15 +38,27 @@ def check():
     except controller.InvalidGame as i:
         return "Invalid", 400
 
-@app.route("/submit")
+@app.route("/submit", methods = ['POST'])
 def submit():
-    controller.answers(get_gamecode(), answers)
+    ks = request.form.keys()
+    gamecode = request.form["gamecode"]
+    answers = {k: request.form[k] for k in ks}
+    try:
+        controller.answers(gamecode, answers)
+        return "Success. Now wait for the results..."
+    except controller.MissingAnswer as m:
+        logger.error("{}".format(answers))
+        raise m
 
 @app.route("/endgame")
 def endgame():
     gamecode = get_gamecode()
     controller.end_game(gamecode)
     return "Ending game {}".format(gamecode)
+
+@app.route("/listgames")
+def listgames():
+    return controller.list_games()
 
 def launch():
     serve(app, host='0.0.0.0', port=8000)

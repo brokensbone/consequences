@@ -55,41 +55,42 @@
 
     <!-- Main content div -->
     <div id="container" class="container features">
-      <form>
+      <form action="/api/submit" method="post">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <input id=100 name="100" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
           <small id="emailHelp" class="form-text text-muted">This will be used to send you your result.</small>
         </div>
 
         <div class="form-group">
-          <label for="questionTextarea1">His name</label>
-          <textarea class="form-control" id="questionTextarea1" rows="1"></textarea>
+          <label for="1">His name</label>
+          <textarea class="form-control" id="1" name="1" rows="1"></textarea>
         </div>
         <div class="form-group">
-          <label for="questionTextarea2">Her name</label>
-          <textarea class="form-control" id="questionTextarea2" rows="1"></textarea>
+          <label for="2">Her name</label>
+          <textarea class="form-control" id="2" name="2" rows="1"></textarea>
         </div>
         <div class="form-group">
-          <label for="questionTextarea3">Where they met</label>
-          <textarea class="form-control" id="questionTextarea3" rows="1"></textarea>
+          <label for="3">Where they met</label>
+          <textarea class="form-control" id="3" name="3" rows="1"></textarea>
         </div>
         <div class="form-group">
-          <label for="questionTextarea4">He said</label>
-          <textarea class="form-control" id="questionTextarea4" rows="2"></textarea>
+          <label for="4">He said</label>
+          <textarea class="form-control" id="4" name="4" rows="2"></textarea>
         </div>
         <div class="form-group">
-          <label for="questionTextarea5">She said</label>
-          <textarea class="form-control" id="questionTextarea5" rows="2"></textarea>
+          <label for="5">She said</label>
+          <textarea class="form-control" id="5" name="5" rows="2"></textarea>
         </div>
         <div class="form-group">
-          <label for="questionTextarea6">And the consequence was...</label>
-          <textarea class="form-control" id="questionTextarea6" rows="2"></textarea>
+          <label for="6">And the consequence was...</label>
+          <textarea class="form-control" id="6" name="6" rows="2"></textarea>
         </div>
         <div class="form-group">
-          <label for="questionTextarea7">And the world said...</label>
-          <textarea class="form-control" id="questionTextarea7" rows="2"></textarea>
+          <label for="7">And the world said...</label>
+          <textarea class="form-control" id="7" name="7" rows="2"></textarea>
         </div>
+        <input name="gamecode" id="gamecode" value="" type="hidden" />
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

@@ -30,6 +30,7 @@ function checkGameValid() {
   });
   p.then(function(result){
     console.log("OK")
+    document.getElementById("gamecode").value = code;
   }, function(error) {
     alert("Gamecode '" + code + "' isn't valid")
     window.location.href = "../";
