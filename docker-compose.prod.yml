@@ -2,6 +2,7 @@ version: '2'
 services:
   python-api:
     build: ./python
+    network_mode: "host"
     image: registry.alcachofa.faith/develop/consequences/python-api:prod
     volumes:
       - ./python/:/app
