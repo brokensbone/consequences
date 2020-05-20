@@ -2,13 +2,12 @@ version: '2'
 services:
   python-api:
     build: ./python
-    network_mode: "host"
-    image: registry.alcachofa.faith/develop/consequences/python-api:prod
+    image: registry.alcachofa.faith/live/consequences/python-api:dev
     volumes:
       - ./python/:/app
-      - ./proddata/:/data
+      - ./data/:/data
     ports:
-      - 8999:8000
+      - 8998:8000
     expose:
       - 8000
     environment:
@@ -16,7 +15,7 @@ services:
     entrypoint: watchmedo auto-restart --recursive --pattern="*.py" --directory="/app/src" python /app/main.py
   nginx:
     build: ./web
-    image: registry.alcachofa.faith/develop/consequences/nginx:prod
+    image: registry.alcachofa.faith/develop/live/nginx:dev
     volumes:
       - ./web/app/:/app
     ports:
