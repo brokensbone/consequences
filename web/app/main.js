@@ -10,7 +10,7 @@
 
 /*************************************************** CONSTANTS **********************/
 
-var URL = "/api/";
+var URL = "./api/";
 const QUERY_PARAM_ACTION = "action";
 const QUERY_PARAM_SERVER = "server";
 

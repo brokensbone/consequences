@@ -1,5 +1,5 @@
 
-var URL = "/api/";
+var URL = "./api/";
 
 function getGamecode() {
   let url = new URLSearchParams(window.location.search)
